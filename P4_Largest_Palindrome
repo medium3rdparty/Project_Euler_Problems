@@ -1,0 +1,37 @@
+% A palindromic number reads the same both ways.
+% The largest palindrome made from the product of two 2-digit numbers is
+% 9009 = 91 × 99.
+
+% Find the largest palindrome made from the product of two 3-digit numbers.
+
+
+% Thought process two 3-digits numbers can make a largest number
+% 999 x 999 = 998001
+% the largest palindrome will be the palindrome closest to 998001
+
+clear all, clc;
+tic
+
+A = zeros(1,10000);
+ac = 1;
+for t = 999:-1:100
+    for k = 999:-1:100
+        
+        y = t*k;
+        
+        x = num2str(y);
+        z = flip(x);
+        w = str2num(z);
+        
+        if y == w
+            A(ac) = y;
+            ac = ac + 1;
+        end
+        
+    end
+end
+
+Amax = max(A);
+fprintf('the number is %d \n',Amax);
+
+toc
